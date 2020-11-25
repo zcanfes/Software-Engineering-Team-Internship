@@ -9,22 +9,22 @@
 ## About the Project
 
 
-The project is based on analyzing the raw data from modem’s in the field. The raw data consist
+The project is based on analyzing the raw data from devices in the field. The raw data consist
 of the daily updates each minute. They contain the device id, update type, neighbors, connected devices,
 rssi and so on. 
 
-I was responsible for counting the slow and regular update per hour, counting the
-neighbor and station number per hour and calculate the average update duration. Moreover, I was responsible for designing 
-a method to detect the dropped updates and analyze the reasons for a dropped update. 
+This project is to count the slow and regular update per hour, counting the
+neighbor and station number per hour and calculate the average update duration. Moreover, a method is designed
+to detect the dropped updates and analyze the reasons for a dropped update. 
 
 Analyzing the average update duration gives an important conclusion about the dropped updates. From time to time, problems 
 with updates from the devices occur. This means less information about the customer
 experience and it affects the monitoring outcome; the graphs would be incomplete. Since there are more reasons for an update 
 to drop e.g. hardware problems in the field, physical conditions, other software problems etc. this project only focuses on 
-the ones that are because of slow update. 
+the ones that are because of slow updates. 
 
 To find reasons why an update is dropped and analyzing every dropped update is necessary
-for the improvement of update analysis of devices that are in the field. This way, the customer experience
+for the improvement of analysis of devices that are in the field. This way, the customer experience
 increases and debugging errors becomes easier.  
 
 ## Environment Variables
@@ -114,7 +114,8 @@ before slow: (1599603166.001, 1599603192.001) = 26.0
 after slow: (1599603192.001, 1599603227.001) = 35.0
 ```
 show the timestamp of the slow update and the updates before and after that slow update.
-Here the time difference before slow is 26.0 seconds and after slow is 35.0 seconds. In total, the time difference between regular updates is 61.0 seconds.
+Here the time difference before slow is 26.0 seconds and after slow is 35.0 seconds. In total, the time difference between
+regular updates is 61.0 seconds which implies that no updates were dropped in that interval.
 
 ## Sample Inspect Data Output
 
