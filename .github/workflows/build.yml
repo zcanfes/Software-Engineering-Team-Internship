@@ -1,0 +1,40 @@
+name: Build and Push
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Build and push to Amazon ECR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Get the version from tag
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+      - name: Build, tag and push image to Amazon ECR
+        uses: whoan/docker-build-with-cache-action@v5
+        with:
+          username: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          registry: ${{ secrets.AWS_ECR_REGISTRY }}
+          image_name: tools
+          image_tag: ${{ steps.get_version.outputs.VERSION }}
+
+      - name: Notify Slack (#build-messages) with the status of build
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: author, action
+          author_name: 'Internship Project'
+          channel: '#build-messages'
+          text: ':docker: image for version: "${{ steps.get_version.outputs.VERSION }}"'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: always() # Pick up events even if the job fails or is canceled.

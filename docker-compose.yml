@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  app:
+    build: .
+    volumes:
+      - ${DATA_FOLDER}:/app/dataFolder
+      - ${ANALYSIS_FOLDER}:/app/analysis
+    environment:
+      DATA_FOLDER: /app/dataFolder
+      SENTRY_DSN: ${SENTRY_DSN}
+      ANALYSIS_FOLDER: /app/analysis
+      BOUNDARY: ${BOUNDARY}
+      INSPECT_DROPPED: ${INSPECT_DROPPED}
+      INSPECT_DATA: ${INSPECT_DATA}

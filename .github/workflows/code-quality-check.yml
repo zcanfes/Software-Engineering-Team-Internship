@@ -1,0 +1,41 @@
+name: Code Quality
+on:
+  pull_request:
+    branches: [ development ]
+
+jobs:
+  flake8:
+    name: Flake8 Linting
+    runs-on: ubuntu-latest
+    env:
+      error_threshold: 0
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Setup Python version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+
+      - name: Dependency installation
+        run: pip install flake8
+
+      - name: Flake8 linting
+        id: flake
+        run: |
+          flake8 --append-config=tools/dev/.flake8 --statistics --count | tee flake8.txt
+          export flake_error_count=`tail -n 1 flake8.txt`
+          echo "::set-output name=number::$flake_error_count"
+          if [ $flake_error_count -gt $error_threshold ]; then
+            exit 1
+          fi
+      - name: Comment on PR
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "There are ${{ steps.flake.outputs.number }} Flake8 errors while the threshold is ${{ env.error_threshold }}. :disappointed: \nThis will block you to merge the PR, so please try to fix them."
+          check_for_duplicate_msg: true
+        if: ${{ failure() }}
