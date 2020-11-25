@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [ development ]
   push:
-    branches:[ master ]
+    branches: [ master ]
 
 jobs:
   flake8:
