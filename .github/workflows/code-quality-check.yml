@@ -2,6 +2,8 @@ name: Code Quality
 on:
   pull_request:
     branches: [ development ]
+  push:
+    branches:[ master ]
 
 jobs:
   flake8:
