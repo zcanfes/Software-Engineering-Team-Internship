@@ -2,16 +2,9 @@
 
 | QA Criteria  | Status | Info |
 |:------------- |:-------------:|:-------------:|
-|Documented Integrations|
 |Documented Variables|:white_check_mark:|[See below.](#environment-variables)|
-|Documented API|
-|Project Structure|
 |Unit Tests (Dev)|:white_check_mark:|[See below.](#running-unit-tests)|
-|System Tests (Dev)|
-|Unit Tests (CICD Pipeline)|
-|System Tests (CICD Pipeline)|
 |Building Containers|:white_check_mark:|
-|Deployment|
 
 ## About the Project
 
