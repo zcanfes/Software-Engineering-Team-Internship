@@ -8,6 +8,7 @@
 
 ## About the Project
 
+
 The project is based on analyzing the raw data from modem’s in the field. The raw data consist
 of the daily updates each minute. They contain the device id, update type, neighbors, connected devices,
 rssi and so on. 
