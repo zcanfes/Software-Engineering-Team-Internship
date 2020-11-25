@@ -13,7 +13,7 @@ The project is based on analyzing the raw data from devices in the field. The ra
 of the daily updates each minute. They contain the device id, update type, neighbors, connected devices,
 rssi and so on. 
 
-This project is to count the slow and regular update per hour, counting the
+This project is to count the slow and regular updates per hour, counting the
 neighbor and station number per hour and calculate the average update duration. Moreover, a method is designed
 to detect the dropped updates and analyze the reasons for a dropped update. 
 
