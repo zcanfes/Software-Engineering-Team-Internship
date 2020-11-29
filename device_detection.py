@@ -81,51 +81,51 @@ class DetectionRule:
 
 DETECTION_RULES = [
     DetectionRule(
-        device_name="air4920",
-        device_type=6,
+        device_name="device0",
+        device_type=0,
         mac_prefix=["88:41:FC", "F4:17:B8"],
         num_streams_5=3,
     ),
     DetectionRule(
-        device_name="air4930",
-        device_type=18,
+        device_name="device1",
+        device_type=1,
         mac_prefix=["88:41:FC", "F4:17:B8"],
         num_streams_5=4,
     ),
     DetectionRule(
-        device_name="genexis7840",
-        device_type=22,
-        mac_prefix=["00:0F:94", "34:E3:80"],
-        interfaces=["br-lan_4001"],
-    ),
-    DetectionRule(
-        device_name="genexis6840",
-        device_type=21,
+        device_name="device2",
+        device_type=2,
         mac_prefix=["00:0F:94", "34:E3:80"],
         interfaces=["br-lan"],
     ),
     DetectionRule(
-        device_name="fmg3542-d10a",
-        device_type=16,
-        env="tafjord",
+        device_name="device3",
+        device_type=3,
+        mac_prefix=["00:0F:94", "34:E3:80"],
+        interfaces=["br-lan"],
+    ),
+    DetectionRule(
+        device_name="device4",
+        device_type=4,
+        env="env0",
         interfaces=["wlan0", "ath0"],
     ),
     DetectionRule(
-        device_name="emg5924-d10a",
-        device_type=27,
-        env="tafjord",
+        device_name="device5",
+        device_type=5,
+        env="env0",
         interfaces=["ra0", "ath0"],
     ),
     DetectionRule(
-        device_name="vmg8825-b50b",
-        device_type=12,
-        env="tafjord",
+        device_name="device6",
+        device_type=6,
+        env="env1",
         interfaces=["wl0", "wl1"],
     ),
     DetectionRule(
-        device_name="vmg8825-t50k",
-        device_type=13,
-        env="online",
+        device_name="device7",
+        device_type=7,
+        env="env2",
         interfaces=["ra0", "rai0"],
     ),
 ]
@@ -134,7 +134,7 @@ DeviceMetadata = namedtuple("DeviceMetadata", ["name", "device_type", "is_gatewa
 
 DEVICE_TYPE_METADATA = {
     rule.device_type: DeviceMetadata(
-        rule.device_name, rule.device_type, rule.device_type not in [6, 18]
+        rule.device_name, rule.device_type, rule.device_type not in [1, 3]
     )
     for rule in DETECTION_RULES
 }
