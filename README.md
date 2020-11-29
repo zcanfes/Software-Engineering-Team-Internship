@@ -129,7 +129,7 @@ When in INSPECT_DATA mode, the application works on the raw data files in the di
 2020-09-18 00:55:39.779 | INFO     | inspect_data:neighbor_count:110 - neighbors: [0, 0, 21, 21, 21, 20, 20, 20, 20, 20, 20, 23, 23, 23, 19, 19, 19, 22, 22, 22, 0, 0, 0, 0]
 2020-09-18 00:55:39.902 | INFO     | inspect_data:station_count:85 - stations: [0, 0, 13, 0, 0, 14, 0, 0, 14, 0, 0, 16, 0, 0, 23, 0, 0, 26, 0, 0, 0, 0, 0, 0]
 2020-09-18 00:55:39.905 | INFO     | inspect_data:avg_upd_not_dropped:131 - average upd duration if not dropped:59.74s
-2020-09-18 00:55:39.906 | INFO     | inspect_data:get_device_type:148 - {'F4:17:B8:7F:A4:BC': 18}
+2020-09-18 00:55:39.906 | INFO     | inspect_data:get_device_type:148 - {'device3': 3}
 2020-09-18 00:55:39.906 | SUCCESS  | __main__:main:64 - file /dataFiles/rawdata.jsonl completed
 ```
 
@@ -139,7 +139,7 @@ The next lines contains the information about the raw data such as version, driv
 
 After that, the average update duration is given. This average is calculated for updates that does not imply a dropped update.
 
-The device id and device type can be found in `{'F4:17:B8:7F:A4:BC': 18}` 
+The device id and device type can be found in `{'device3': 3}` 
 
 If the application completes the process without any errors, a SUCCESS message will be displayed.
 
